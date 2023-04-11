@@ -30,6 +30,8 @@ enum Doctype {
   PERMISSION
   SUPERVISOR
   PROJECT
+  KEYWORD
+  DOCUMENT
   FIELD
   PROJECT_FIELD
   STUDENT
@@ -162,7 +164,38 @@ model Project {
   // Project 1:M ProjectField
   ProjectFields ProjectField[]
 
+  // Project 1:M Keyword
+  Keywords Keyword[]
+
+  // Project 1:M Documents
+  Documents Document[]
+
   @@map("projects")
+}
+
+model Keyword {
+  id   String @id @default(uuid()) @db.Uuid
+  name String @db.VarChar(255)
+
+  // Project 1:M Keyword
+  Project   Project @relation(fields: [projectId], references: [id])
+  projectId String  @map("project_id") @db.Uuid
+
+  @@map("keywords")
+}
+
+model Document {
+  id           String @id @default(uuid()) @db.Uuid
+  caption      String @db.VarChar(255)
+  originalName String @map("original_name") @db.VarChar(255)
+  path         String @unique @db.VarChar(255)
+  mimeType     String @map("mime_type") @db.VarChar(255)
+  size         Int
+
+  Project   Project @relation(fields: [projectId], references: [id])
+  projectId String  @map("project_id") @db.Uuid
+
+  @@map("documents")
 }
 
 model Field {
