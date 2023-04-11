@@ -10,18 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Study levels
-enum Level {
-  FIRST_STAGE
-  SECOND_STAGE
-  THIRD_STAGE
-  FOURTH_STAGE
-  FIFTH_STAGE
-  SIXTH_STAGE
-  MASTERS
-  PHD
-}
-
 enum Gender {
   MALE
   FEMALE
@@ -34,14 +22,18 @@ enum Action {
   DELETE
 }
 
-enum Doctype {
-  COLLEGE
-  DEPARTMENT
+model Doctype {
+  id          String   @id @default(uuid()) @db.Uuid
+  Name        String   @unique @db.VarChar(255)
+  dateCreated DateTime @default(now())
+  dateUpdated DateTime @updatedAt
+
+  // Doctype 1:M Permission
+  Permissions Permission[]
 }
 
 model College {
-  id String @id @default(uuid()) @db.Uuid
-
+  id   String @id @default(uuid()) @db.Uuid
   name String @unique @db.VarChar(50)
 
   // College 1:M Department
@@ -59,10 +51,72 @@ model Department {
   College   College @relation(fields: [collegeId], references: [id])
   collegeId String  @map("college_id") @db.Uuid
 
+  // Department 1:M Supervisor
+  Supervisors Supervisor[]
+
   @@map("departments")
 }
 
 model Person {
   id       String @id @default(uuid()) @db.Uuid
   fullName String @map("full_name")
+  gender   Gender
+
+  // Person 1:1 Superivsor
+  Supervisor Supervisor?
+
+  // Person 1:1 Admin
+  Admin Admin?
+
+  @@map("people")
+}
+
+model Admin {
+  id          String   @id @default(uuid()) @db.Uuid
+  username    String   @unique @db.VarChar(255)
+  password    String   @db.Char(90)
+  token       String   @db.VarChar(255)
+  isActive    Boolean  @default(true) @map("is_active")
+  dateCreated DateTime @default(now())
+  dateUpdated DateTime @updatedAt
+
+  // Person 1:1 Admin
+  Person   Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+  personId String @unique @map("person_id") @db.Char(36)
+
+  // Admin 1:M Permission
+  Permissions Permission[]
+
+  @@map("admins")
+}
+
+model Permission {
+  id         String @id @default(uuid()) @db.Uuid
+  actionType Action @default(READ) @map("action_type")
+
+  // Admin 1:M Permission
+  Admin   Admin  @relation(fields: [adminId], references: [id])
+  adminId String @map("college_id") @db.Uuid
+
+  // Permisison 1:M Doctype
+  Doctype   Doctype @relation(fields: [doctypeId], references: [id])
+  doctypeId String  @map("doctype_id") @db.Uuid
+
+  @@unique([actionType, adminId, doctypeId])
+  @@map("permissions")
+}
+
+model Supervisor {
+  id    String @id @default(uuid()) @db.Uuid
+  email String @unique @db.VarChar(255)
+
+  // Department 1:M Supervisor
+  Department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String     @map("department_id") @db.Uuid
+
+  // Person 1:1 Supervisor
+  Person   Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+  personId String @unique @map("person_id") @db.Char(36)
+
+  @@map("supervisors")
 }
