@@ -22,14 +22,17 @@ enum Action {
   DELETE
 }
 
-model Doctype {
-  id          String   @id @default(uuid()) @db.Uuid
-  Name        String   @unique @db.VarChar(255)
-  dateCreated DateTime @default(now())
-  dateUpdated DateTime @updatedAt
-
-  // Doctype 1:M Permission
-  Permissions Permission[]
+enum Doctype {
+  COLLEGE
+  DEPARTMENT
+  STUDY_LEVEL
+  ADMIN
+  PERMISSION
+  SUPERVISOR
+  PROJECT
+  FIELD
+  PROJECT_FIELD
+  STUDENT
 }
 
 model College {
@@ -43,8 +46,7 @@ model College {
 }
 
 model Department {
-  id String @id @default(uuid()) @db.Uuid
-
+  id   String @id @default(uuid()) @db.Uuid
   name String @db.VarChar(60)
 
   // College 1:M Department
@@ -54,7 +56,27 @@ model Department {
   // Department 1:M Supervisor
   Supervisors Supervisor[]
 
+  // Department 1:M StudyLevel
+  StudyLevels StudyLevel[]
+
   @@map("departments")
+}
+
+model StudyLevel {
+  id   String @id @default(uuid()) @db.Uuid
+  name String @unique @db.VarChar(255)
+
+  // Department 1:M StudyLevel
+  Department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String     @db.Uuid
+
+  // StudyLevel 1:M Project
+  Projects Project[]
+
+  // StudyLevel 1:M Student
+  Student Student[]
+
+  @@map("study_level")
 }
 
 model Person {
@@ -91,18 +113,15 @@ model Admin {
 }
 
 model Permission {
-  id         String @id @default(uuid()) @db.Uuid
-  actionType Action @default(READ) @map("action_type")
+  id         String  @id @default(uuid()) @db.Uuid
+  actionType Action  @default(READ) @map("action_type")
+  doctype    Doctype @default(COLLEGE)
 
   // Admin 1:M Permission
   Admin   Admin  @relation(fields: [adminId], references: [id])
   adminId String @map("college_id") @db.Uuid
 
-  // Permisison 1:M Doctype
-  Doctype   Doctype @relation(fields: [doctypeId], references: [id])
-  doctypeId String  @map("doctype_id") @db.Uuid
-
-  @@unique([actionType, adminId, doctypeId])
+  @@unique([actionType, doctype, adminId])
   @@map("permissions")
 }
 
@@ -118,5 +137,70 @@ model Supervisor {
   Person   Person @relation(fields: [personId], references: [id], onDelete: Cascade)
   personId String @unique @map("person_id") @db.Char(36)
 
+  // Supervisor 1:M Project
+  Projects Project[]
+
   @@map("supervisors")
+}
+
+model Project {
+  id          String @id @default(uuid()) @db.Uuid
+  rate        Float
+  description String @db.VarChar(255)
+
+  // StudyLevel 1:M Project
+  StudyLevel   StudyLevel @relation(fields: [studyLevelId], references: [id])
+  studyLevelId String     @map("study_leve_id") @db.Uuid
+
+  // Supevrvisor 1:M Project
+  Supervisor   Supervisor @relation(fields: [supervisorId], references: [id])
+  supervisorId String     @map("supervisor_id") @db.Uuid
+
+  // Project 1:M Student
+  Students Student[]
+
+  // Project 1:M ProjectField
+  ProjectFields ProjectField[]
+
+  @@map("projects")
+}
+
+model Field {
+  id   String @id @default(uuid()) @db.Uuid
+  name String @unique @db.VarChar(255)
+
+  // Field 1:M ProjectField
+  ProjectFields ProjectField[]
+
+  @@map("fields")
+}
+
+model ProjectField {
+  id String @id @default(uuid()) @db.Uuid
+
+  // Project 1:M ProjectField
+  Project   Project @relation(fields: [projectId], references: [id])
+  projectId String  @map("project_id") @db.Uuid
+
+  // Field 1:M ProjectField
+  Field   Field  @relation(fields: [fieldId], references: [id])
+  fieldId String @map("field_id") @db.Uuid
+
+  @@unique([projectId, fieldId])
+  @@map("project_fields")
+}
+
+model Student {
+  id    String @id @default(uuid()) @db.Uuid
+  email String @unique @db.VarChar(255)
+
+  // StudyLevel 1:M Student
+  level        StudyLevel @relation(fields: [studyLevelId], references: [id])
+  studyLevelId String     @map("study_level_id") @db.Uuid
+
+  // Project 1:M Student
+  Project   Project @relation(fields: [projectId], references: [id])
+  projectId String  @map("project_id") @db.Uuid
+
+  @@map("students")
 }
