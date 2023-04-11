@@ -1,0 +1,1234 @@
+{
+	"info": {
+		"_postman_id": "54a44384-a8c7-4eb9-b295-34587f791b91",
+		"name": "ProjectFinalVersion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21531433"
+	},
+	"item": [
+		{
+			"name": "Colleges",
+			"item": [
+				{
+					"name": "GetOneById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/colleges/fb636961-9f51-4265-b3c5-e787e93aa4bf",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"colleges",
+								"fb636961-9f51-4265-b3c5-e787e93aa4bf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMany",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/colleges",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"colleges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Administration and Economics\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/colleges",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"colleges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/colleges/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"colleges",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOne",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/colleges/33fea1ba-8217-4ed1-bccf-941283ec443b",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"colleges",
+								"33fea1ba-8217-4ed1-bccf-941283ec443b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMany",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/colleges/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"colleges",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOne",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Languages\",\r\n    \"websiteLink\": \"https://colleges.su.edu.krd/language/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/colleges/5b3cccec-912a-41ae-8443-8aab26108907",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"colleges",
+								"5b3cccec-912a-41ae-8443-8aab26108907"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "GetOneById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/departments/12e79576-930f-473b-9557-5468f8dd3db7",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"departments",
+								"12e79576-930f-473b-9557-5468f8dd3db7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMany",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/departments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kurdish Language\",\r\n    \"collegeId\": \"d5e18765-06d0-4828-8fa0-9cc627c839e1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/departments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/departments/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"departments",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOne",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/departments/97066314-73fa-45be-abed-b5d6a7af8683",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"departments",
+								"97066314-73fa-45be-abed-b5d6a7af8683"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMany",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/departments/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"departments",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOne",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Physics\",\r\n    \"collegeId\": \"46d82ccb-e008-4d0c-8c2e-a802772d9fd8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/departments/b094f236-cd0c-4a58-9cfc-55d102372277",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"departments",
+								"b094f236-cd0c-4a58-9cfc-55d102372277"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GetOneById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/844b3fb4-a3a9-4656-ac70-49fbd77aa132",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"844b3fb4-a3a9-4656-ac70-49fbd77aa132"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMany",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"mustafaadmin\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/bfce51a7-074d-4e98-b48f-f968b2297dec/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"bfce51a7-074d-4e98-b48f-f968b2297dec",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/bfce51a7-074d-4e98-b48f-f968b2297dec/refreshtoken",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"bfce51a7-074d-4e98-b48f-f968b2297dec",
+								"refreshtoken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create One",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"User\": {\r\n        \"username\": \"sajaattallahmanager\",\r\n        \"password\": \"12345\",\r\n        \"token\": \"\",\r\n        \"isActive\": true\r\n    },\r\n    \"Person\": {\r\n        \"fullName\": \"Saja Attallah Mohammed\",\r\n        \"dateOfBirth\": \"2001-05-22T00:00:00.000Z\",\r\n        \"collegeEmail\": \"sccsadmin90@su.edu.krd\",\r\n        \"gender\": \"Male\",\r\n        \"departmentId\": \"342f5cf6-9c24-4137-b25c-79fba7dff2ff\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOne",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMany",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOne",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supervisors",
+			"item": [
+				{
+					"name": "GetOneById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/supervisors/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supervisors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMany",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/supervisors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supervisors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Person\": {\r\n        \"fullName\": \"Dalay Anwar\",\r\n        \"dateOfBirth\": \"1995-05-12T00:00:00.000Z\",\r\n        \"collegeEmail\": \"sccs01182@su.edu.krd\",\r\n        \"gender\": \"Female\",\r\n        \"departmentId\": \"342f5cf6-9c24-4137-b25c-79fba7dff2ff\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/supervisors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supervisors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/supervisors/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supervisors",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOne",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/supervisors/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supervisors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMany",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/supervisors/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supervisors",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOne",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/supervisors/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supervisors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permissions",
+			"item": [
+				{
+					"name": "GetOneById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/permissions/ed468fe7-fa76-47ed-8a20-a66979ce7805",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions",
+								"ed468fe7-fa76-47ed-8a20-a66979ce7805"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMany",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/permissions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"54d47852-8acf-416a-8a6d-849296e1ac7a\",\r\n    \"docType\": \"STUDENT\",\r\n    \"permissionType\": \"CREATE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/permissions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"docType\": \"STUDENT\",\r\n        \"permissionType\": \"CREATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"STUDENT\",\r\n        \"permissionType\": \"UPDATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"STUDENT\",\r\n        \"permissionType\": \"READ\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"STUDENT\",\r\n        \"permissionType\": \"DELETE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"SUPERVISOR\",\r\n        \"permissionType\": \"CREATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"SUPERVISOR\",\r\n        \"permissionType\": \"UPDATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"SUPERVISOR\",\r\n        \"permissionType\": \"READ\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"SUPERVISOR\",\r\n        \"permissionType\": \"DELETE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"PROJECT\",\r\n        \"permissionType\": \"CREATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"PROJECT\",\r\n        \"permissionType\": \"UPDATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"PROJECT\",\r\n        \"permissionType\": \"READ\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"PROJECT\",\r\n        \"permissionType\": \"DELETE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"COLLEGE\",\r\n        \"permissionType\": \"CREATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"COLLEGE\",\r\n        \"permissionType\": \"UPDATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"COLLEGE\",\r\n        \"permissionType\": \"READ\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"COLLEGE\",\r\n        \"permissionType\": \"DELETE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"DEPARTMENT\",\r\n        \"permissionType\": \"CREATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"DEPARTMENT\",\r\n        \"permissionType\": \"UPDATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"DEPARTMENT\",\r\n        \"permissionType\": \"READ\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"DEPARTMENT\",\r\n        \"permissionType\": \"DELETE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"USER\",\r\n        \"permissionType\": \"CREATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"USER\",\r\n        \"permissionType\": \"UPDATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"USER\",\r\n        \"permissionType\": \"READ\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"USER\",\r\n        \"permissionType\": \"DELETE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"PERMISSION\",\r\n        \"permissionType\": \"CREATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"PERMISSION\",\r\n        \"permissionType\": \"UPDATE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"PERMISSION\",\r\n        \"permissionType\": \"READ\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    },\r\n    {\r\n        \"docType\": \"PERMISSION\",\r\n        \"permissionType\": \"DELETE\",\r\n        \"userId\": \"92021360-6634-40ca-b2fb-3315d94f8716\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/permissions/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOne",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rolesandpermissions/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rolesandpermissions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMany",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rolesandpermissions/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rolesandpermissions",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOne",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rolesandpermissions/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rolesandpermissions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "GetOneById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects/f9c6c8e3-d90b-4036-b801-63190788c7f9",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"f9c6c8e3-d90b-4036-b801-63190788c7f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMany",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Project Alpha",
+									"type": "text"
+								},
+								{
+									"key": "rate",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2023",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Hello World",
+									"type": "text"
+								},
+								{
+									"key": "departmentId",
+									"value": "678114e6-646a-4917-8f82-127ad7d86708",
+									"type": "text"
+								},
+								{
+									"key": "supervisorId",
+									"value": "0eef7ab5-5030-49ed-bcad-e2d38c5bc724",
+									"type": "text"
+								},
+								{
+									"key": "document",
+									"type": "file",
+									"src": "/D:/cheatsheets/typescript/pdfs/TypeScript Types.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/projects",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteDocuments",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "documents",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/projects/1/documents",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"1",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOne",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMany",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOne",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "beatae ullam",
+									"type": "text"
+								},
+								{
+									"key": "rate",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2021",
+									"type": "text"
+								},
+								{
+									"key": "departmentId",
+									"value": "31004514-e54a-447b-a4d3-ae1c1ced7cc6",
+									"type": "text"
+								},
+								{
+									"key": "supervisorId",
+									"value": "7b0c53b0-d16e-4a78-9ab6-514e616000d8",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Reiciendis laborum id occaecati recusandae ab. Modi quo voluptatem quidem neque fugiat. Laborum blanditiis sapiente omnis ducimus omnis.",
+									"type": "text"
+								},
+								{
+									"key": "document",
+									"type": "file",
+									"src": "/D:/cheatsheets/typescript/pdfs/TypeScript Interfaces.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/projects/009c8cc8-adb2-4d0c-8c30-c98f71550d2b",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"009c8cc8-adb2-4d0c-8c30-c98f71550d2b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "GetOneById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMany",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/students",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOne",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMany",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students/many",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOne",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im11c3RhZmFhZG1pbiIsImlhdCI6MTY3ODQ3NjI4OCwiZXhwIjoxNjc4NTYyNjg4fQ.4F7rmBLlpOIUkoMLP1LJAIAFMP49T5FZWc0Fajtauok",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "api",
+			"value": "{{host}}/api/v1",
+			"type": "string"
+		}
+	]
+}

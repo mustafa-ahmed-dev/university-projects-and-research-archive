@@ -1,0 +1,15 @@
+# : TODO: create a public repo which does not include the commented files here
+
+# Modules
+node_modules
+
+# Environment variables
+# .env
+
+# Logs
+# logs
+# *.log
+
+# Keys
+# keys
+# *.key

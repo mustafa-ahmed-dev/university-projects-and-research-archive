@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Study levels
+enum Level {
+  FIRST_STAGE
+  SECOND_STAGE
+  THIRD_STAGE
+  FOURTH_STAGE
+  FIFTH_STAGE
+  SIXTH_STAGE
+  MASTERS
+  PHD
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum Action {
+  CREATE
+  READ
+  UPDATE
+  DELETE
+}
+
+enum Doctype {
+  COLLEGE
+  DEPARTMENT
+}
+
+model College {
+  id String @id @default(uuid()) @db.Uuid
+
+  name String @unique @db.VarChar(50)
+
+  // College 1:M Department
+  Departments Department[]
+
+  @@map("colleges")
+}
+
+model Department {
+  id String @id @default(uuid()) @db.Uuid
+
+  name String @db.VarChar(60)
+
+  // College 1:M Department
+  College   College @relation(fields: [collegeId], references: [id])
+  collegeId String  @map("college_id") @db.Uuid
+
+  @@map("departments")
+}
+
+model Person {
+  id       String @id @default(uuid()) @db.Uuid
+  fullName String @map("full_name")
+}
