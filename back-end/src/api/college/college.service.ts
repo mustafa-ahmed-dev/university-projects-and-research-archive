@@ -1,4 +1,4 @@
-import { PrismaClient, College, DocType } from "@prisma/client";
+import { PrismaClient, College, Doctype } from "@prisma/client";
 
 import Service from "./../abstracts/Service";
 import InternalServerError from "./../errors/InternalServerError";
@@ -6,7 +6,7 @@ import asyncHandler from "../helpers/asyncHandler.helper";
 import { CollegeData } from "./college.validation";
 
 class CollegeService extends Service {
-  constructor(private prisma: PrismaClient, private docType: DocType) {
+  constructor(private prisma: PrismaClient, private doctype: Doctype) {
     super();
   }
 

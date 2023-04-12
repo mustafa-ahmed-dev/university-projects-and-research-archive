@@ -1,17 +1,21 @@
-import { College, PrismaClient, Doctype, Action } from "@prisma/client";
+import { Department, PrismaClient, Doctype, Action } from "@prisma/client";
 import { Router, Request, Response, NextFunction } from "express";
 
-import Controller from "./../abstracts/Controller";
-import CollegeService from "./college.service";
-import validationMiddleware from "./../middleware/validation.middleware";
-import { CollegeSchema, Id, CollegeData, IdSchema } from "./college.validation";
+import Controller from "../abstracts/Controller";
+import DepartmentService from "./department.service";
+import validationMiddleware from "../middleware/validation.middleware";
+import {
+  DepartmentSchema,
+  Id,
+  DepartmentData,
+  IdSchema,
+} from "./department.validation";
 import asyncHandler from "../helpers/asyncHandler.helper";
-import NotFoundError from "./../errors/NotFoundError";
-import ConflictError from "./../errors/ConflictError";
-import authMiddleware from "./../middleware/auth.middleware";
-import permissionsMiddleware from "./../middleware/permissions.middleware";
+import NotFoundError from "../errors/NotFoundError";
+import authMiddleware from "../middleware/auth.middleware";
+import permissionsMiddleware from "../middleware/permissions.middleware";
 
-class CollegeController extends Controller {
+class DepartmentController extends Controller {
   public routes = {
     getAll: "",
     getOne: "/:id",
@@ -21,15 +25,15 @@ class CollegeController extends Controller {
   };
   public router: Router;
 
-  private service: CollegeService;
+  private service: DepartmentService;
   private prisma: PrismaClient;
 
   constructor() {
-    super("/colleges", Doctype.COLLEGE);
+    super("/departments", Doctype.COLLEGE);
 
     this.router = Router();
     this.prisma = new PrismaClient();
-    this.service = new CollegeService(this.prisma, this.docType);
+    this.service = new DepartmentService(this.prisma, this.docType);
 
     this.initializeRoutes();
   }
@@ -47,7 +51,7 @@ class CollegeController extends Controller {
       this.routes.createOne,
       authMiddleware,
       permissionsMiddleware(this.prisma, Action.CREATE, this.docType),
-      validationMiddleware(CollegeSchema),
+      validationMiddleware(DepartmentSchema),
       this.createOne_route
     );
 
@@ -63,15 +67,15 @@ class CollegeController extends Controller {
       this.routes.updateOne,
       authMiddleware,
       permissionsMiddleware(this.prisma, Action.UPDATE, this.docType),
-      validationMiddleware(CollegeSchema),
+      validationMiddleware(DepartmentSchema),
       this.updateOne_route
     );
   }
 
   /**
-   * @desc        Gets all colleges
+   * @desc        Gets all departments
    * @method      GET
-   * @path        /colleges
+   * @path        /departments
    * @access      public
    */
   private getAll_route = async (
@@ -79,7 +83,7 @@ class CollegeController extends Controller {
     response: Response,
     next: NextFunction
   ) => {
-    const [colleges, error] = <[College[], any]>(
+    const [departments, error] = <[Department[], any]>(
       await asyncHandler(this.service.findAll())
     );
 
@@ -87,14 +91,14 @@ class CollegeController extends Controller {
 
     response.json({
       success: true,
-      colleges,
+      departments,
     });
   };
 
   /**
-   * @desc        Gets one college by id
+   * @desc        Gets one department by id
    * @method      GET
-   * @path        /colleges
+   * @path        /departments
    * @access      public
    */
   private getOne_route = async (
@@ -104,29 +108,29 @@ class CollegeController extends Controller {
   ) => {
     const { id } = <Id>request.params;
 
-    const [college, error] = <[College, any]>(
+    const [department, error] = <[Department, any]>(
       await asyncHandler(this.service.findOneById(id))
     );
 
     if (error) return next(error);
 
-    if (!college) {
+    if (!department) {
       next(
-        new NotFoundError(`There is no such a college with the id of ${id}`)
+        new NotFoundError(`There is no such a department with the id of ${id}`)
       );
       return;
     }
 
     response.json({
       success: true,
-      college,
+      department,
     });
   };
 
   /**
-   * @desc        Creates one college
+   * @desc        Creates one department
    * @method      POST
-   * @path        /colleges
+   * @path        /departments
    * @access      public
    */
   private createOne_route = async (
@@ -134,35 +138,24 @@ class CollegeController extends Controller {
     response: Response,
     next: NextFunction
   ) => {
-    const { name } = <CollegeData>request.body;
+    const departmentData = <DepartmentData>request.body;
 
-    let [college, error] = <[College, any]>(
-      await asyncHandler(this.service.findOneByName(name))
-    );
-
-    if (error) return next(error);
-
-    if (college)
-      return next(
-        new ConflictError(`A college with the name "${name}" already exists`)
-      );
-
-    [college, error] = <[College, any]>(
-      await asyncHandler(this.service.createOne({ name }))
+    const [department, error] = <[Department, any]>(
+      await asyncHandler(this.service.createOne(departmentData))
     );
 
     if (error) return next(error);
 
     response.status(201).json({
       success: true,
-      college,
+      department,
     });
   };
 
   /**
-   * @desc        Creates one college
+   * @desc        Creates one department
    * @method      DELETE
-   * @path        /colleges/:id
+   * @path        /departments/:id
    * @access      public
    */
   private deleteOne_route = async (
@@ -172,30 +165,30 @@ class CollegeController extends Controller {
   ) => {
     const { id } = <Id>request.params;
 
-    let [college, error] = <[College, any]>(
+    let [department, error] = <[Department, any]>(
       await asyncHandler(this.service.findOneById(id))
     );
 
     if (error) return next(error);
 
-    if (!college)
+    if (!department)
       return next(
-        new NotFoundError(`There is no such a college with the id of ${id}`)
+        new NotFoundError(`There is no such a department with the id of ${id}`)
       );
 
-    [college, error] = <[College, any]>(
+    [department, error] = <[Department, any]>(
       await asyncHandler(this.service.deleteOne(id))
     );
 
     if (error) return next(error);
 
-    response.json({ success: true, college });
+    response.json({ success: true, department });
   };
 
   /**
-   * @desc        Creates one college
+   * @desc        Creates one department
    * @method      PUT
-   * @path        /colleges/:id
+   * @path        /departments/:id
    * @access      public
    */
   private updateOne_route = async (
@@ -205,30 +198,19 @@ class CollegeController extends Controller {
   ) => {
     const { id } = <Id>request.params;
 
-    let [college, error] = <[College, any]>(
-      await asyncHandler(this.service.findOneById(id))
-    );
+    const departmentData = <DepartmentData>request.body;
 
-    if (error) return next(error);
-
-    if (!college)
-      return next(
-        new NotFoundError(`There is no such a college with the id of ${id}`)
-      );
-
-    const { name } = <CollegeData>request.body;
-
-    [college, error] = <[College, any]>(
-      await asyncHandler(this.service.updateOne(id, { name }))
+    const [department, error] = <[Department, any]>(
+      await asyncHandler(this.service.updateOne(id, departmentData))
     );
 
     if (error) return next(error);
 
     response.json({
-      college,
+      department,
       success: true,
     });
   };
 }
 
-export default CollegeController;
+export default DepartmentController;
