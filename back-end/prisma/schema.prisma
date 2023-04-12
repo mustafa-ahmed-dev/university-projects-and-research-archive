@@ -106,7 +106,7 @@ model Admin {
 
   // Person 1:1 Admin
   Person   Person @relation(fields: [personId], references: [id], onDelete: Cascade)
-  personId String @unique @map("person_id") @db.Char(36)
+  personId String @unique @map("person_id") @db.Uuid
 
   // Admin 1:M Permission
   Permissions Permission[]
@@ -137,7 +137,7 @@ model Supervisor {
 
   // Person 1:1 Supervisor
   Person   Person @relation(fields: [personId], references: [id], onDelete: Cascade)
-  personId String @unique @map("person_id") @db.Char(36)
+  personId String @unique @map("person_id") @db.Uuid
 
   // Supervisor 1:M Project
   Projects Project[]
